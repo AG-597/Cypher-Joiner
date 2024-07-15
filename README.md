@@ -2,6 +2,7 @@
 Discord Token Joiner
 
 This joiner works incredibly fast and it relatively undetected 
+
 This joiner does nto work well with flagegd tokens because it is the free version
 
 # MAKE SURE YOU HAVE A [CSOLVER](https://csolver.xyz) API KEY
