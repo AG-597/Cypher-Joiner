@@ -4,6 +4,7 @@ import os
 import random
 import threading
 import concurrent.futures
+from CSolver.Hcap.hcap import Solver
 import time
 import requests
 from colorama import Fore, Style
@@ -48,15 +49,7 @@ def solve(url, key, rqdata, proxy):
     with open("config.json") as conf_file:
         config = json.load(conf_file)
         started_solving = time.time()
-        headers = {'API-Key': config['CSolver-key']}
-        payload = {
-            'sitekey': key,
-            'site': url,
-            'proxy': proxy,
-            'rqdata': rqdata
-        }
-        response = requests.get("https://api.csolver.xyz/solve", json=payload, headers=headers)
-        solution = response.json().get('solution')
+        solution = Solver.solve(config['CSolver-key'], key, url, proxy, rqdata)    
         print(f"{colorful}[ Solved ] {gray}|{pink} {cyan}[ {solution[-32:]} ] {reset}| [ {round(time.time()-started_solving)}s ]")
         solved += 1
         return solution
