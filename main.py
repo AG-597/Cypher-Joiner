@@ -49,7 +49,7 @@ def solve(url, key, rqdata, proxy):
     with open("config.json") as conf_file:
         config = json.load(conf_file)
         started_solving = time.time()
-        solution = Solver.solve('hCaptchaEnterprise', config['CSolver-key'], key, url, proxy, rqdata)    
+        solution = Solver(config['CSolver-key']).solve('hCaptchaEnterprise', key, url, proxy, rqdata)    
         print(f"{colorful}[ Solved ] {gray}|{pink} {cyan}[ {solution[-32:]} ] {reset}| [ {round(time.time()-started_solving)}s ]")
         solved += 1
         return solution
